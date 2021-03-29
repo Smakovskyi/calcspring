@@ -4,7 +4,8 @@
     <!-- collaborators and configuration for this bean go here -->
     <constructor-arg ref="view" />
   </bean>
-  <bean id="view" class="ua.kpi.view.View"> <!-- collaborators and configuration for this bean go here -->
+  <bean id="view" factory-bean="factory" factory-method="createView"> <!-- collaborators and configuration for this bean go here -->
   </bean>
+  <bean id="factory" class="ua.kpi.MVCConsoleFactory" factory-method="getInstance" />
   <!-- more bean definitions go here -->
 </beans>
