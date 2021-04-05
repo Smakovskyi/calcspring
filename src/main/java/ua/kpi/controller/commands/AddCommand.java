@@ -4,9 +4,10 @@ import lombok.Setter;
 import ua.kpi.model.Calculator;
 
 @Setter
+@CommandName(name="add")
 public class AddCommand implements Command {
 
-  private Calculator calculator = Calculator.getInstance();
+  private Calculator calculator;
 
   @Override
   public String execute(String[] args) {

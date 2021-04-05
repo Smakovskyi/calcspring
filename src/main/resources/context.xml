@@ -3,9 +3,21 @@
   <bean id="controller" class="ua.kpi.controller.Controller">
     <!-- collaborators and configuration for this bean go here -->
     <constructor-arg ref="view" />
+    <constructor-arg>
+      <list>
+        <ref bean="addCommand" />
+        <ref bean="subCommand" />
+      </list>
+    </constructor-arg>
   </bean>
   <bean id="view" factory-bean="factory" factory-method="createView"> <!-- collaborators and configuration for this bean go here -->
   </bean>
   <bean id="factory" class="ua.kpi.MVCConsoleFactory" factory-method="getInstance" />
-  <!-- more bean definitions go here -->
+  <bean id="addCommand" class="ua.kpi.controller.commands.AddCommand">
+    <property name="calculator" ref="calculator" />
+  </bean>
+  <bean id="subCommand" class="ua.kpi.controller.commands.SubCommand">
+    <property name="calculator" ref="calculator" />
+  </bean>
+  <bean id="calculator" factory-method="getInstance" class="ua.kpi.model.Calculator"/>
 </beans>

@@ -1,5 +1,7 @@
 package ua.kpi.controller;
 
+
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +15,7 @@ import lombok.Builder;
 import lombok.Setter;
 import ua.kpi.controller.commands.Command;
 import ua.kpi.controller.commands.CommandFactory;
+import ua.kpi.controller.commands.CommandName;
 import ua.kpi.controller.commands.DefaultCommand;
 import ua.kpi.view.Viewable;
 
@@ -31,12 +34,13 @@ public class Controller {
   private CommandFactory commandFactory = CommandFactory.getInstance();
   private Map<String, Command> commands = new HashMap<>();
 
-  public Controller(Viewable view) {
+  public Controller(Viewable view, List<Command> commands) {
     this.view = view;
-    for(String commandName : commandFactory.getCommandNames() ){
-      commandFactory.createCommand(commandName)
-          .ifPresent( command -> commands.put(commandName, command) );
+    for(Command command: commands){
+      String name = command.getClass().getAnnotation(CommandName.class).name();
+      this.commands.put(name, command);
     }
+
   }
 
   // add 2 3
