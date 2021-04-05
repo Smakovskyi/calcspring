@@ -10,7 +10,11 @@ public class Calculator implements Calculable {
   private int lastResult;
 
   public static Calculator getInstance(){
-    return instance;
+    return new Calculator();
+  }
+
+  private Calculator() {
+    System.out.println("Calculator bean is created");
   }
 
   @CallMe
