@@ -2,18 +2,21 @@ package ua.kpi.model;
 
 
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
+@Component
 @Getter
 public class Calculator implements Calculable {
 
   private static Calculator instance = new Calculator();
   private int lastResult;
 
+
   public static Calculator getInstance(){
     return new Calculator();
   }
 
-  private Calculator() {
+  Calculator() {
     System.out.println("Calculator bean is created");
   }
 

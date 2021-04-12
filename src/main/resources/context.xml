@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd
+  ">
+  <context:component-scan base-package="ua.kpi"/>
+  <context:annotation-config></context:annotation-config>
 
   <bean id="controller" class="ua.kpi.controller.Controller" autowire="constructor">
+
+
     <!-- collaborators and configuration for this bean go here -->
   <!--  <constructor-arg ref="view" />
     <constructor-arg>
@@ -21,4 +32,17 @@
     <property name="calculator" ref="calculator" />
   </bean>
   <bean id="calculator" scope="prototype" factory-method="getInstance" class="ua.kpi.model.Calculator"/>
+  <bean id="springFeatures" class="ua.kpi.BeanForSpringFeatures" >
+    <lookup-method name="createCalculator" bean="calculator"/>
+    <replaced-method name="executeAdd" replacer="methodReplacer">
+      <arg-type>int</arg-type>
+      <arg-type>int</arg-type>
+    </replaced-method>
+  </bean>
+  <bean id="methodReplacer" class="ua.kpi.MethodReplacement">
+    <constructor-arg ref="calculator" />
+  </bean>
+  <bean id="lifecycle" class="ua.kpi.LifecycleBean">
+    <property name="calculator" ref="calculator"/>
+  </bean>
 </beans>

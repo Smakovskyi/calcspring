@@ -1,5 +1,9 @@
 package ua.kpi.controller.commands;
 
+import org.springframework.stereotype.Component;
+
+@Component
+@CommandName(name = "exit")
 public class ExitCommand implements Command{
 
 

@@ -13,6 +13,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.kpi.controller.commands.Command;
 import ua.kpi.controller.commands.CommandFactory;
 import ua.kpi.controller.commands.CommandName;
@@ -23,6 +25,7 @@ import ua.kpi.view.Viewable;
 @Setter
 @AllArgsConstructor( access = AccessLevel.PRIVATE)
 @Builder
+@Component
 public class Controller {
 
   private Viewable view;
@@ -34,6 +37,7 @@ public class Controller {
   private CommandFactory commandFactory = CommandFactory.getInstance();
   private Map<String, Command> commands = new HashMap<>();
 
+  @Autowired
   public Controller(Viewable view, List<Command> commands) {
     this.view = view;
     for(Command command: commands){

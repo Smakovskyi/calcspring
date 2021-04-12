@@ -1,12 +1,17 @@
 package ua.kpi.controller.commands;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.kpi.model.Calculator;
 
 @Setter
 @CommandName(name = "sub")
+@Component
 public class SubCommand implements Command {
 
+  @Autowired
   private Calculator calculator;
   @Override
   public String execute(String[] args) {
