@@ -2,13 +2,14 @@ package ua.kpi;
 
 import java.lang.reflect.Method;
 import org.springframework.beans.factory.support.MethodReplacer;
+import ua.kpi.model.Calculable;
 import ua.kpi.model.Calculator;
 
 public class MethodReplacement implements MethodReplacer {
 
-  private Calculator calculator;
+  private Calculable calculator;
 
-  public MethodReplacement(Calculator calculator) {
+  public MethodReplacement(Calculable calculator) {
     this.calculator = calculator;
   }
 

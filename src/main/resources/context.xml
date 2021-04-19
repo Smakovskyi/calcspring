@@ -22,8 +22,8 @@
       </list>
     </constructor-arg> -->
   </bean>
-  <bean id="view" factory-bean="factory" factory-method="createView"> <!-- collaborators and configuration for this bean go here -->
-  </bean>
+  <!--<bean id="view" factory-bean="factory" factory-method="createView">
+  </bean>-->
   <bean id="factory" class="ua.kpi.MVCConsoleFactory" factory-method="getInstance" />
   <bean id="addCommand" class="ua.kpi.controller.commands.AddCommand">
     <property name="calculator" ref="calculator" />

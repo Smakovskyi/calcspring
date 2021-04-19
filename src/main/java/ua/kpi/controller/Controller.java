@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import javax.inject.Inject;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,15 +36,17 @@ public class Controller {
       new InputStreamReader(in));
 
   private CommandFactory commandFactory = CommandFactory.getInstance();
+
+  @Inject
   private Map<String, Command> commands = new HashMap<>();
 
   @Autowired
-  public Controller(Viewable view, List<Command> commands) {
+  public Controller(Viewable view/*, List<Command> commands*/) {
     this.view = view;
-    for(Command command: commands){
+   /* for(Command command: commands){
       String name = command.getClass().getAnnotation(CommandName.class).name();
       this.commands.put(name, command);
-    }
+    }*/
 
   }
 

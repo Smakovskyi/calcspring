@@ -6,12 +6,13 @@ import lombok.Setter;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import ua.kpi.model.Calculable;
 import ua.kpi.model.Calculator;
 
 @Setter
 public class LifecycleBean implements InitializingBean, DisposableBean {
 
-  Calculator calculator;
+  Calculable calculator;
 
   @Override
   public void destroy() throws Exception {

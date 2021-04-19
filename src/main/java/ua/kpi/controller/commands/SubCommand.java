@@ -4,15 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ua.kpi.model.Calculable;
 import ua.kpi.model.Calculator;
 
 @Setter
-@CommandName(name = "sub")
-@Component
+@Component("sub")
 public class SubCommand implements Command {
 
   @Autowired
-  private Calculator calculator;
+  private Calculable calculator;
   @Override
   public String execute(String[] args) {
     Integer first = Integer.valueOf(args[0]);

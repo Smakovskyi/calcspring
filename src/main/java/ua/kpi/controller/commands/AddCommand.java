@@ -3,15 +3,15 @@ package ua.kpi.controller.commands;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ua.kpi.model.Calculable;
 import ua.kpi.model.Calculator;
 
 @Setter
-@CommandName(name="add")
-@Component
+@Component("add")
 public class AddCommand implements Command {
 
   @Autowired
-  private Calculator calculator;
+  private Calculable calculator;
 
   @Override
   public String execute(String[] args) {
